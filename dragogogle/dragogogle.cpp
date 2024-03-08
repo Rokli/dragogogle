@@ -12,7 +12,7 @@ string matrix[][15]{
     {},//2
     {"$"," "," "," "," "," "," "," "," "," "," "," "," "," "},//3
     {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},//4
-    {"Счётчик:"}//4
+    {"Счётчик:"}//5
 };
 void setcur(int x, int y)//установка курсора на позицию  x y 
 {
@@ -37,7 +37,7 @@ void PringMatrix() {
     if (matrix[3][0] == "$" && matrix[3][1] == "|") {
         exit(-1);
     }
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         cout << endl;
         for(int j = 0; j < 15;j++)
             cout << matrix[i][j];
@@ -45,6 +45,7 @@ void PringMatrix() {
 }
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     int counter = 0;
     bool flag = false;
     int timesec = 400;
@@ -77,6 +78,8 @@ int main()
             PathNext();
             PringMatrix();
         }
+        counter++;
+        matrix[5][1] = to_string(counter);
         flag = false;
         //Sleep(1000);
         //system("cls");
