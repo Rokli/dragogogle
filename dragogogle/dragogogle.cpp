@@ -1,5 +1,4 @@
-﻿// dragogogle.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿
 #include <conio.h>
 #include <windows.h>
 #include <iostream>
@@ -14,7 +13,7 @@ string matrix[][15]{
     {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},//4
     {"Счётчик:"}//5
 };
-void setcur(int x, int y)//установка курсора на позицию  x y 
+void setcur(int x, int y)
 {
     COORD coord;
     coord.X = x;
@@ -61,6 +60,8 @@ int main()
                 matrix[i-1][0] = "$";
                 Sleep(timesec);
                 setcur(0, 0);
+                counter++;
+                matrix[5][1] = to_string(counter);
                 PringMatrix();
             }
             for (int i = 1; i < 3; i++) {
@@ -68,6 +69,8 @@ int main()
                 matrix[i + 1][0] = "$";
                 Sleep(timesec);
                 setcur(0, 0);
+                counter++;
+                matrix[5][1] = to_string(counter);
                 PringMatrix();
             }
         }
@@ -77,11 +80,11 @@ int main()
             setcur(0, 0);
             PathNext();
             PringMatrix();
+            counter++;
+
+            matrix[5][1] = to_string(counter);
+            
         }
-        counter++;
-        matrix[5][1] = to_string(counter);
         flag = false;
-        //Sleep(1000);
-        //system("cls");
     }
 }
