@@ -1,17 +1,16 @@
-﻿
-#include <conio.h>
+﻿#include <conio.h>
 #include <windows.h>
 #include <iostream>
 #include <string>
 #include <random>
 using namespace std;
 string matrix[][15]{
-    {"----------------"},//0
-    {},//1
-    {},//2
-    {"$"," "," "," "," "," "," "," "," "," "," "," "," "," "},//3
-    {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},//4
-    {"Счётчик:"}//5
+    {"----------------"},
+    {},
+    {},
+    {"$"," "," "," "," "," "," "," "," "," "," "," "," "," "},
+    {"#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"},
+    {"Счётчик:"}
 };
 void setcur(int x, int y)
 {
@@ -31,11 +30,10 @@ void PathNext() {
         matrix[4][i] = matrix[4][i + 1];
     }
 }
-void PringMatrix() {
+void PrintMatrix() {
     PathNext();
-    if (matrix[3][0] == "$" && matrix[3][1] == "|") {
+    if (matrix[3][0] == "$" && matrix[3][1] == "|") 
         exit(-1);
-    }
     for (int i = 0; i < 6; i++) {
         cout << endl;
         for(int j = 0; j < 15;j++)
@@ -47,10 +45,10 @@ int main()
     setlocale(LC_ALL, "Russian");
     int counter = 0;
     bool flag = false;
-    int timesec = 400;
+    int timesec = 150;
     srand(time(0));
-    PringMatrix();
-    while (1) {
+    PrintMatrix();
+    while (true) {
         if (GetAsyncKeyState('W') & 0x8000) {
             flag = true;
             matrix[3][0] = " ";
@@ -62,7 +60,7 @@ int main()
                 setcur(0, 0);
                 counter++;
                 matrix[5][1] = to_string(counter);
-                PringMatrix();
+                PrintMatrix();
             }
             for (int i = 1; i < 3; i++) {
                 matrix[i][0] = " ";
@@ -71,7 +69,7 @@ int main()
                 setcur(0, 0);
                 counter++;
                 matrix[5][1] = to_string(counter);
-                PringMatrix();
+                PrintMatrix();
             }
         }
         if (!flag) 
@@ -79,7 +77,7 @@ int main()
             Sleep(timesec);
             setcur(0, 0);
             PathNext();
-            PringMatrix();
+            PrintMatrix();
             counter++;
 
             matrix[5][1] = to_string(counter);
