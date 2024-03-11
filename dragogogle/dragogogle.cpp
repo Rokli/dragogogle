@@ -46,7 +46,6 @@ int main()
     int counter = 0;
     bool flag = false;
     int timesec = 150;
-    srand(time(0));
     PrintMatrix();
     while (true) {
         if (GetAsyncKeyState('W') & 0x8000) {
